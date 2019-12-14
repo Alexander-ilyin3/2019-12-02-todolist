@@ -4,22 +4,31 @@ let modalEditTask = document.querySelector('#modalEditTask')
 let formEditTask = document.querySelector('#formEditTask')
 let buttonConfirm = document.querySelector('#buttonConfirm')
 
-// $(formDeleteTask).modal('show')
-// $(modalEditTask).modal('show') Проверка. Всплывает при загрузке страницы
+let formRemoveAll = document.querySelector('#formRemoveAll')
+let modalRemoveAll = document.querySelector('#modalRemoveAll')
 
+let formRemoveAllDefaultText = formRemoveAll.innerHTML
 
 formAddTask.addEventListener('submit', formAddTaskHandler)
 formEditTask.addEventListener('submit', formEditTaskHandler)
-// modalAddTask.addEventListener('shown.bs.modal', modalAddTaskHandler)
+
+formRemoveAll.addEventListener('submit', formRemoveAllHandler)
+
 $(modalAddTask).on('shown.bs.modal', modalAddTaskHandler)
+$(modalRemoveAll).on('show.bs.modal', modalRemoveAllHandler)
 
-// buttonConfirm.addEventListener('click', buttonConfirmHandler)
 
-for(let key in localStorage) {
+
+const keysArray = Object.keys(localStorage)
+
+keysArray.sort((prev, next) => {
+    return JSON.parse(localStorage[prev]).edited - JSON.parse(localStorage[next]).edited
+})
+
+keysArray.forEach(key => {
     if(localStorage.hasOwnProperty(key)){
         let task = JSON.parse(localStorage[key])
-        console.log(task)
+
         addTask(task, key)
     }
-}
-
+});

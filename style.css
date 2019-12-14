@@ -2,3 +2,6 @@
     padding-top: 20px
 }
 
+.buttons-container > button {
+    margin-left: 4px;
+}
