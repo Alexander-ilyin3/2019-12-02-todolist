@@ -32,3 +32,10 @@ keysArray.forEach(key => {
         addTask(task, key)
     }
 });
+
+
+updateBadges()
+
+
+
+

@@ -20,6 +20,8 @@ function formAddTaskHandler(event){
     $(modalAddTask).modal('hide')
 
     this.reset()
+
+    updateBadges()
 }
 
 function deleteButtonHandler() {
@@ -29,6 +31,8 @@ function deleteButtonHandler() {
 
     localStorage.removeItem(taskId)
     taskElement.parentNode.removeChild(taskElement)
+
+    updateBadges()
 }
 
 function editButtonHandler() {
@@ -45,6 +49,7 @@ function editButtonHandler() {
     formEditTask.elements.id.value = taskId
 
     $(modalEditTask).modal('show')
+
 
 }
 
@@ -67,6 +72,8 @@ function formEditTaskHandler(event) {
     localStorage.setItem(taskId, JSON.stringify(task))
     
     $(modalEditTask).modal('hide')
+
+    updateBadges()
 }
 
 function modalAddTaskHandler() {
@@ -98,6 +105,8 @@ function formRemoveAllHandler(event) {
         }
     }
     $(modalRemoveAll).modal('hide')
+
+    updateBadges()
 }
 
 function modalRemoveAllHandler() {

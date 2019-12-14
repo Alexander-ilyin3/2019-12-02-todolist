@@ -16,14 +16,32 @@
             <h1>Todo list</h1>
         </div>
 
-        <div class="text-right">
-            <button type="button" class="btn btn-primary btn-lg m-b-30" data-toggle="modal" data-target="#modalAddTask">
-                <i class="glyphicon glyphicon-plus-sign"></i> Add task
-            </button>
-            <button type="button" class="btn btn-danger btn-lg m-b-30" data-toggle="modal" data-target="#modalRemoveAll">
-                <i class="glyphicon glyphicon-remove-sign"></i> Remove All
-            </button>
+<!-- Панели со статитикой -->
+
+<div class="row" id="statistic">
+    <div class="col-md-4">
+        <div class="panel panel-danger">
+            <div class="panel-heading">Should be done</div>
+            <div class="panel-body">Task count  <span class="badge"></span></div>
         </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-warning">
+            <div class="panel-heading">Will be done soon</div>
+            <div class="panel-body">Task count  <span class="badge"></span></div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-success">
+            <div class="panel-heading">Already done</div>
+            <div class="panel-body">Task count  <span class="badge"></span></div>
+        </div>
+    </div>
+</div>
+
+<!--  -->
+
+        
         <ul class="nav nav-tabs" role="tablist">
                 <li class="active"><a href="#todo" data-toggle="tab">Todo</a></li>
                 <li><a href="#inprogress" data-toggle="tab">In progress</a></li>
@@ -44,6 +62,46 @@
                     <ul class="list-group" data-status="3"></ul>
                 </div>
             </div>
+
+
+            <div class="text-right">
+                <button type="button" class="btn btn-primary btn-lg m-b-30" data-toggle="modal" data-target="#modalAddTask">
+                    <i class="glyphicon glyphicon-plus-sign"></i> Add task
+                </button>
+                <button type="button" class="btn btn-danger btn-lg m-b-30" data-toggle="modal" data-target="#modalRemoveAll">
+                    <i class="glyphicon glyphicon-remove-sign"></i> Remove All
+                </button>
+            </div>
+<!-- 
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Shoud be done
+                </div>
+                <div class="panel-body">
+                    Task count
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Shoud be done
+                </div>
+                <div class="panel-body">
+                    Task count
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Shoud be done
+                </div>
+                <div class="panel-body">
+                    Task count
+                </div>
+            </div> -->
+
+
+
+
+
     </div>
 
 
