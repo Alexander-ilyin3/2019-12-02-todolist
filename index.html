@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>lesson 19.11.02</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
@@ -17,6 +18,7 @@
         </div>
 
 <!-- Панели со статитикой -->
+
 
 <div class="row" id="statistic">
     <div class="col-md-4">
@@ -51,15 +53,15 @@
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="todo">
-                    <ul class="list-group" data-status="1"></ul>
+                        <ul class="list-group" data-status="1"></ul>
                 </div>
     
                 <div role="tabpanel" class="tab-pane" id="inprogress">
-                    <ul class="list-group"data-status="2"></ul>
+                        <ul class="list-group" data-status="2"></ul>
                 </div>
     
                 <div role="tabpanel" class="tab-pane"  id="done">
-                    <ul class="list-group" data-status="3"></ul>
+                        <ul class="list-group" data-status="3"></ul>
                 </div>
             </div>
 
@@ -72,36 +74,6 @@
                     <i class="glyphicon glyphicon-remove-sign"></i> Remove All
                 </button>
             </div>
-<!-- 
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Shoud be done
-                </div>
-                <div class="panel-body">
-                    Task count
-                </div>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Shoud be done
-                </div>
-                <div class="panel-body">
-                    Task count
-                </div>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Shoud be done
-                </div>
-                <div class="panel-body">
-                    Task count
-                </div>
-            </div> -->
-
-
-
-
-
     </div>
 
 
@@ -120,9 +92,21 @@
         
                     <div class="modal-body">
                         <form id="formAddTask">
+                            <!-- datepicker -->
                             <div class="form-group">
                                 <input type="text" name="title" placeholder="Title" autofocus="true" class="form-control">
                             </div>
+                            <!--  -->
+                                 <div class="input-group date" data-provide="datepicker">
+                                    <input type="text" class="form-control" name="dateTime" autocomplete="off">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            <div class="form-group shadow-textarea">
+                                <label for="exampleFormControlTextarea6"></label>
+                                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" name ="description" placeholder="Description"></textarea>
+                              </div>
                         </form>
                     </div>
         
@@ -148,7 +132,7 @@
         
                      <div class="modal-body">
                         <form id="formRemoveAll"><span>
-                            Do you really want to remove <strong id="taskQuantity"></strong> task<span id="sLetter"></span> in <strong id="sectionName"></strong> section?</span>
+                            Do you really want to delete <strong id="taskQuantity"></strong> task<span id="sLetter"></span> in <strong id="sectionName"></strong> section?</span>
                         </form> 
                     </div> 
         
@@ -175,16 +159,29 @@
                     <div class="modal-body">
                         <form id="formEditTask">
 
-                            <input type="hidden" name="id"> <!--  Для того что б форма знала id таска -->
+                            <input type="hidden" name="id"> 
                             
                             <div class="form-group">
                                 <input type="text" name="title" placeholder="Title" autofocus="true" class="form-control">
                             </div>
+                            <div class="form-group">
+                                <div class="input-group date" data-provide="datepicker">
+                                    <input type="text" class="form-control" name="dateTime" autocomplete="off">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-th"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <select name="status" class="form-control">
                                     <option value="1">To do</option>
                                     <option value="2">In Progress</option>
                                     <option value="3">Done</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" class="form-control"> </textarea>
+                            </div>
                         </form>
                     </div>
         
@@ -196,50 +193,13 @@
             </div>
         </div>
 
-<!-- Modal are you sure?  -->
 
-<!-- <div class="modal fade" id="modalDeleteTask" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">Delete Task</h4>
-                </div>
-     -->
-<!--  -->
-
-<!--  -->
-                <!-- <div class="modal-body">
-                    <form id="formDeleteTask">
-
-                        <input type="hidden" name="id"> 
-                        
-                        <div class="form-group">
-                            <input type="text" name="title" placeholder="Title" autofocus="true" class="form-control">
-                        </div>
-                            <select name="status" class="form-control">
-                                <option value="1">To do</option>
-                                <option value="2">In Progress</option>
-                                <option value="3">Done</option>
-                            </select>
-                    </form>
-                </div>
-    
-                <div class="modal-footer">
-                    <button class="btn btn-danger ">No</button>
-                    <button class="btn btn-success ">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
 
     <script src="functions.js"></script>
     <script src="handlers.js"></script>
 
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>

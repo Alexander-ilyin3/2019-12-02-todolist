@@ -6,6 +6,8 @@ function formAddTaskHandler(event){
         title: this.elements.title.value,
         status: 1, // 1 - todo, 2 - inprogress, 3 - done
         edited: id,
+        dateTime: this.elements.dateTime.value,
+        description: this.elements.description.value
     }
 
     if (!newTask.title) {
@@ -20,12 +22,12 @@ function formAddTaskHandler(event){
     $(modalAddTask).modal('hide')
 
     this.reset()
-
     updateBadges()
+    refreshListOfLinks()
 }
 
 function deleteButtonHandler() {
-    let taskElement = this.parentNode.parentNode
+    let taskElement = this.parentNode.parentNode.parentNode.parentNode.parentNode
 
     let taskId = taskElement.dataset.id
 
@@ -36,7 +38,7 @@ function deleteButtonHandler() {
 }
 
 function editButtonHandler() {
-    let taskElement = this.parentNode.parentNode
+    let taskElement = this.parentNode.parentNode.parentNode.parentNode.parentNode
 
     let taskId = taskElement.dataset.id
 
@@ -47,21 +49,23 @@ function editButtonHandler() {
     }
 
     formEditTask.elements.id.value = taskId
+    formEditTask.elements.description.value = taskElement.querySelector('.panel-body').innerHTML
+    formEditTask.elements.dateTime.value = taskElement.querySelector('.panel-footer').innerHTML
 
     $(modalEditTask).modal('show')
-
-
 }
 
 function formEditTaskHandler(event) {
     event.preventDefault()
-
     let taskId = this.elements.id.value
+    let taskElement = document.querySelector(`li[data-id="${this.elements.id.value}"]`)
 
     let task = {
         title: this.elements.title.value,
         status: +this.elements.status.value,
         edited: new Date().getTime(),
+        description: document.querySelector('#formEditTask textarea[name="description"]').value,
+        dateTime: document.querySelector('#formEditTask [name="dateTime"]').value,
     }
     
     let itemElement = document.querySelector(`[data-id="${taskId}"]`)
@@ -74,11 +78,14 @@ function formEditTaskHandler(event) {
     $(modalEditTask).modal('hide')
 
     updateBadges()
+    refreshListOfLinks()
 }
 
 function modalAddTaskHandler() {
     formAddTask.elements.title.parentNode.classList.remove('has-error')
     formAddTask.elements.title.focus()
+
+
 }
 
 function formRemoveAllHandler(event) {
@@ -138,3 +145,21 @@ function modalRemoveAllHandler() {
     }
 }
 
+function linkHandler(event) {
+
+        let activeTask = document.querySelector('.panel-collapse.collapse.in')
+
+        if (activeTask && !event.target.parentNode.parentNode.childNodes[3].classList[2]) {
+            activeTask.removeAttribute('class')
+            activeTask.setAttribute('class', 'panel-collapse collapse')
+        }
+}
+
+
+function dayElementHandler(event) {
+    console.log(event.target)
+}
+
+function bodyHandler(event) {
+    console.log(event.target)
+}

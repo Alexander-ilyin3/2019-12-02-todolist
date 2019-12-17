@@ -5,3 +5,19 @@
 .buttons-container > button {
     margin-left: 4px;
 }
+
+[role="tabpanel"] .panel-group {
+    margin-bottom: 0;
+}
+
+[role="tabpanel"] .list-group-item{
+    padding: 0 0 0 0;
+    border: none;
+    margin-bottom: 4px;
+}
+
+[role="tabpanel"] .list-group-item a {
+    color: black;
+    text-decoration: none;
+
+}

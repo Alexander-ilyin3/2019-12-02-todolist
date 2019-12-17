@@ -14,8 +14,14 @@ formEditTask.addEventListener('submit', formEditTaskHandler)
 
 formRemoveAll.addEventListener('submit', formRemoveAllHandler)
 
+$('[data-provide="datepicker"]').datepicker(
+        {autoclose: true}
+    );
+
 $(modalAddTask).on('shown.bs.modal', modalAddTaskHandler)
 $(modalRemoveAll).on('show.bs.modal', modalRemoveAllHandler)
+
+
 
 
 
@@ -33,9 +39,6 @@ keysArray.forEach(key => {
     }
 });
 
-
 updateBadges()
-
-
-
+refreshListOfLinks()
 
